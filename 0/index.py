@@ -1,5 +1,6 @@
 #-*- coding:utf-8 -*-
 from  wri_bsid_search import *
+from bae.core.wsgi import WSGIApplication
 #BSID = '3610000E1103'
 #BSID = '3610000E0092'
 #BSID = '46000185DE122'
