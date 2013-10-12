@@ -29,5 +29,4 @@ def app(environ, start_response):
     input = '#title      link(http://www.google.com)'
     html = markdown.markdown(input)
     return html
-  
 application = WSGIApplication(app)
