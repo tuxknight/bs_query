@@ -1,6 +1,7 @@
 ﻿#-*- coding:utf-8 -*-
 from bae.core.wsgi import WSGIApplication
 from  wri_bsid_search import *
+import markdown
 #BSID = '3610000E1103'
 #BSID = '3610000E0092'
 #BSID = '46000185DE122'
@@ -25,5 +26,10 @@ def app(environ, start_response):
 	headers = [('Content-type', 'text/html')]
 	start_response(status, headers)
 	#body=["Welcome to Baidu Cloud!\n"]
-	return body
+    input = '''
+#title
+link(http://www.google.com)
+'''
+    html = markdown.markdown(input)
+	return html
 application = WSGIApplication(app)
