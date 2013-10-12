@@ -27,9 +27,9 @@ def app(environ, start_response):
 	start_response(status, headers)
 	#body=["Welcome to Baidu Cloud!\n"]
     input = '''
-#title
-link(http://www.google.com)
-'''
+    #title
+    link(http://www.google.com)
+    '''
     html = markdown.markdown(input)
 	return html
 application = WSGIApplication(app)
