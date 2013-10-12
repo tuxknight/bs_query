@@ -21,7 +21,7 @@ for i in list:
     result = bs1.resultSet()
     body = body + '</br>' + result.encode('gb2312')
 
-def txt2html(text):
+def text2html(text):
     return markdown.markdown(text)
 
 def app(environ, start_response):
