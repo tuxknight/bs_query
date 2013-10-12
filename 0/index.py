@@ -21,13 +21,16 @@ for i in list:
     result = bs1.resultSet()
     body = body + '</br>' + result.encode('gb2312')
 
+def txt2html(text):
+    return markdown.markdown(text)
+
 def app(environ, start_response):
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
     start_response(status, headers)
     #body=["Welcome to Baidu Cloud!\n"]
     input = '''#title  
-(link)[http://www.google.com]'''
-    html = markdown.markdown(input)
+[link](http://www.google.com)'''
+    html = text2html(input)
     return html
 application = WSGIApplication(app)
