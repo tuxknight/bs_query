@@ -42,14 +42,14 @@ def app(environ, start_response):
 #    bsid = d.get('bsid',[''])[0]
 #    bsid = escape(bsid)
 #    response_body = html % (bsid,'2','3')
-#    response_header = [headers,('Content-Length',str(len(rensponse_body)))]
+#    response_header = [headers,('Content-Length',str(len(response_body)))]
 #    start_response(status,response_header)
 #    return response_body
     d = parse_qs(environ['QUERY_STRING'])
     bsid = d.get('bsid',[''])[0]
     bsid = escape(bsid)
     response_body = html % (bsid,'2','3')
-    response_header = [headers,('Content-Length',str(len(rensponse_body)))]
+    response_header = [headers,('Content-Length',str(len(response_body)))]
     start_response(status,response_header)
     return [response_body]
 application = WSGIApplication(app)
