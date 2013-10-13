@@ -9,10 +9,22 @@ list = ('3610000E1103','46000185DE122','3610000E0092','46001A8042A01')
 c = 0
 head = ('BSID','经度','纬度','基站描述','覆盖半径')
 body = ''
-response_md = '''
-|bsid|bsid|bsid|
-|----|----|----|
-| %s | %s | %s |
+html = '''
+<table>
+<thead>
+<tr> 
+  <td>head1</td>
+  <td>head2</td>
+  <td>head3</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>%s</td>
+  <td>%s</td>
+  <td>%s</td>
+</tbody>
+</table>
 '''
 for i in list:
     if c == 0:
