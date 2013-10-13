@@ -11,7 +11,7 @@ head = ('BSID','经度','纬度','基站描述','覆盖半径')
 body = ''
 response_md = '''
 |bsid|bsid|bsid|
-|:----|:----:|----:|
+|----|----|----|
 | %s | %s | %s |
 '''
 for i in list:
