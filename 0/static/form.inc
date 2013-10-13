@@ -1,4 +1,4 @@
-<form id="Reg" name="register" method="post" action="index.php" onsubmit="return check()">
+<form id="query" name="query" method="post" action="index.py" onsubmit="loading()">
   <table width="366" border="0" bordercolor="#F0F0F0" align="center" cellpadding="10px">
     <tr>
       <td width="120">ำรปงร๛</td>
