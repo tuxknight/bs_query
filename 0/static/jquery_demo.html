@@ -1,0 +1,107 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery1.4.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#p ").click(function(){
+//	$("p.normal").hide();
+	$("p.normal").toggle();
+});
+$("#class").click(function(){
+//	$(".txt").hide();
+	$(".txt").toggle();
+});
+$("#this").click(function(){
+	$(this).hide(1000,function(){alert("Button Is Now Hidden");});
+});
+$("#id").click(function(){
+//	$("#test").hide();
+	$("#test").toggle();
+	});
+$(".ex #hide").click(function(){
+	$(this).parents(".ex").hide("slow")
+	});
+	
+$(".flip").click(function(){
+	$(".panel").slideToggle("slow");
+	});
+$("#fadeto").click(function(){
+	$("#fade").fadeTo("slow",0.6);
+	});
+$("#start").click(function(){
+	$("#box").animate({height:200},"slow");
+	$("#box").animate({width:200},"slow");
+	$("#box").animate({height:100},"slow");
+	$("#box").animate({width:100},"slow");
+	});
+$("#fadeout").click(function(){
+	$(".fadeout").fadeOut(3000);
+	});
+$("#changehtml").click(function(){
+	$("p.normal").html("$(selector).html(content)");
+	});
+$("#appendhtml").click(function(){
+	$("p.normal").append("$(selector).append(content)");
+	$("div#hidden").prepend("div<br />$(selector).prepend(content)<br />");});
+});
+</script>
+<style type="text/css">
+	div.ex{
+	background-color:#e5eecc;
+	padding:7px;
+	border:solid 1px #c3c3c3;
+	}
+	div.panel,p.flip
+	{
+		margin:0px;
+		padding:5px;
+		text-align:center;
+		background:#e5eecc;
+		border:solid 1px #c3c3c3;
+	}
+	div.panel
+	{
+		height:120px;
+		display:none;
+	}
+</style> 
+</head>
+
+<body>
+<h2>This is a heading</h2>
+<button type="button" id="p">Toggle &#60;p&#62;</button>
+<button type="button" id="class">Toggle class&#58;txt</button>
+<button type="button" id="this">Hide Myself</button>
+<button type="button" id="id">Toggle id&#58;test</button>
+<button type="button" id="changehtml">change content of p normal</button>
+<button type="button" id="appendhtml">appand content of p normal</button>
+<br />
+<p id="abc">This is a paragraph.</p>
+<div id="hidden" "></div>
+<p class="normal">This is another paragraph.</p>
+<img id="test" src="img.jpg" width="80" height="50"  alt=" id test"></img>
+<input type="text" class="txt" value="Class txt" />
+<div class="ex"><button type="button" id="hide">Hide text</button>
+	<p>This paragraph <br />will be hidden </p><hr /></div>
+<br />animate()<br />
+<a href="#" id="start">Start Animation</a>
+<div id="box" style="background:green;height:100px;width:100px;position:relative"></div>
+<br />
+slideToggle()
+<br />
+<div class="panel">
+<p>Class panel .</p>
+<p>very useful...JQuery</p>
+</div>
+<p class="flip">Show or Hide Panel</p>
+<br />fadeTo()<br />
+<div id="fade" style="background:red;width:100px;height:100px">
+<button type="button" id="fadeto">Click to fade</button>
+</div>
+<br />fadeOut()<br />
+<div class="fadeout" style="background:red;width:100px;height:100px">
+	fadeOut()<br />
+<button type="button" id="fadeout">Click to fade</button>
+</div>
+</body>
+</html> 
