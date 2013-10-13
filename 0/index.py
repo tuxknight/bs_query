@@ -51,6 +51,6 @@ def app(environ, start_response):
     response_body = response_md % (bsid,'2','3')
     response_header = [headers,('Content-Length',str(len(response_body)))]
     start_response(status,response_header)
-    return [bsid]
+    return body
     #return  md2html(response_body) 
 application = WSGIApplication(app)
