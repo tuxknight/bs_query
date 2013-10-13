@@ -53,8 +53,8 @@ def app(environ, start_response):
 #    d = parse_qs(request_body)
 #    bsid = d.get('bsid',[''])[0]
 #    bsid = escape(bsid)
-#    response_body = html % (bsid,'2','3')
-#    response_header = [headers,('Content-Length',str(len(response_body)))]
+#    response_body = response_md % (bsid,'2','3')
+#    response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
 #    start_response(status,response_header)
 #    return response_body
     d = parse_qs(environ['QUERY_STRING'])
