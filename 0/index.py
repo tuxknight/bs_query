@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+﻿#-*- coding:utf-8 -*-
 from bae.core.wsgi import WSGIApplication
 from  wri_bsid_search import *
 from cgi import parse_qs, escape
