@@ -2,10 +2,6 @@
 from bae.core.wsgi import WSGIApplication
 from  wri_bsid_search import *
 import markdown
-#BSID = '3610000E1103'
-#BSID = '3610000E0092'
-#BSID = '46000185DE122'
-#BSID = '46001A8042A01'
 reload(sys)
 sys.setdefaultencoding('utf-8')
 list = ('3610000E1103','46000185DE122','3610000E0092','46001A8042A01')
@@ -15,11 +11,11 @@ body = ''
 for i in list:
     if c == 0:
         #print '\t'.join(head).encode('gb2312')
-        body='\t'.join(head).encode('gb2312')
+        body='\t'.join(head).encode('utf-8')
     c = c+1
     bs1 = Bs(i)
     result = bs1.resultSet()
-    body = body + '</br>' + result.encode('gb2312')
+    body = body + '</br>' + result.encode('utf-8')
 
 def md2html(mkdn):
     return markdown.markdown(mkdn)
@@ -29,7 +25,5 @@ def app(environ, start_response):
     headers = [('Content-type', 'text/html')]
     start_response(status, headers)
     #body=["Welcome to Baidu Cloud!\n"]
-    input = '''#title  
-[link](http://www.google.com)'''
-    return md2html(input)
+    return body
 application = WSGIApplication(app)
