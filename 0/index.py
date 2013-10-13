@@ -37,5 +37,5 @@ def app(environ, start_response):
     #body=["Welcome to Baidu Cloud!\n"]
     input = '''#title  
 [link](http://www.google.com)'''
-    return return
+    return input
 application = WSGIApplication(md2html(app))
