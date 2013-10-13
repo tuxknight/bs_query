@@ -21,8 +21,14 @@ for i in list:
     result = bs1.resultSet()
     body = body + '</br>' + result.encode('gb2312')
 
-def text2html(text):
-    return markdown.markdown(text)
+#middleware
+class md2html:
+    def __init__(application):
+        self.application = application
+    def process(environ, start_response):
+        result = self.application(environ, start_response)
+        result = markdown.markdown(result)
+        return result
 
 def app(environ, start_response):
     status = '200 OK'
@@ -31,6 +37,5 @@ def app(environ, start_response):
     #body=["Welcome to Baidu Cloud!\n"]
     input = '''#title  
 [link](http://www.google.com)'''
-    html = text2html(input)
-    return html
-application = WSGIApplication(app)
+    return return
+application = WSGIApplication(md2html(app))
