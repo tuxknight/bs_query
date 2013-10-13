@@ -28,10 +28,10 @@ def md2html(mkdn):
 
 def app(environ, start_response):
     status = '200 OK'
-    headers = [('Content-type', 'text/html')]
-    start_response(status, headers)
+    #headers = [('Content-type', 'text/html')]
+    #start_response(status, headers)
     #body=["Welcome to Baidu Cloud!\n"]
-    return body
+    #return body
 # HTTP POST
 #    try:
 #	request_body_size = int(environ.get('CONTENT_LENGTH',0))
@@ -49,7 +49,7 @@ def app(environ, start_response):
     bsid = d.get('bsid',[''])[0]
     bsid = escape(bsid)
     response_body = response_md % (bsid,'2','3')
-    response_header = [headers,('Content-Length',str(len(response_body)))]
+    response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
     start_response(status,response_header)
     return body
     #return  md2html(response_body) 
