@@ -38,4 +38,5 @@ def app(environ, start_response):
     input = '''#title  
 [link](http://www.google.com)'''
     return input
-application = WSGIApplication(md2html(app))
+application = WSGIApplication(app)
+md2html(application)
