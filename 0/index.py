@@ -29,9 +29,9 @@ def md2html(mkdn):
 def app(environ, start_response):
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
-    #start_response(status, headers)
+    start_response(status, headers)
     #body=["Welcome to Baidu Cloud!\n"]
-    #return body
+    return body
 # HTTP POST
 #    try:
 #	request_body_size = int(environ.get('CONTENT_LENGTH',0))
