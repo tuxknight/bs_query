@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 from bae.core.wsgi import WSGIApplication
 from  wri_bsid_search import *
+from cgi import parse_qs, escape
 import markdown
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -8,6 +9,11 @@ list = ('3610000E1103','46000185DE122','3610000E0092','46001A8042A01')
 c = 0
 head = ('BSID','经度','纬度','基站描述','覆盖半径')
 body = ''
+html = '''
+|bsid|bsid|bsid|
+|:----|:----:|----:|
+| %s | %s | %s |
+'''
 for i in list:
     if c == 0:
         #print '\t'.join(head).encode('gb2312')
@@ -23,7 +29,27 @@ def md2html(mkdn):
 def app(environ, start_response):
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
-    start_response(status, headers)
+    #start_response(status, headers)
     #body=["Welcome to Baidu Cloud!\n"]
-    return body
+    #return body
+# HTTP POST
+#    try:
+#	request_body_size = int(environ.get('CONTENT_LENGTH',0))
+#    except(ValueError):
+#	request_body_size = 0
+#    request_body = environ['wsgi.input'].read(request_body_size)
+#    d = parse_qs(request_body)
+#    bsid = d.get('bsid',[''])[0]
+#    bsid = escape(bsid)
+#    response_body = html % (bsid,'2','3')
+#    response_header = [headers,('Content-Length',str(len(rensponse_body)))]
+#    start_response(status,response_header)
+#    return response_body
+    d = parse_qs(environ['QUERY_STRING'])
+    bsid = d.get('bsid',[''])[0]
+    bsid = escape(bsid)
+    response_body = html % (bsid,'2','3')
+    response_header = [headers,('Content-Length',str(len(rensponse_body)))]
+    start_response(status,response_header)
+    return [response_body]
 application = WSGIApplication(app)
