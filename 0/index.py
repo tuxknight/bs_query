@@ -5,7 +5,7 @@ from cgi import parse_qs, escape
 import markdown
 reload(sys)
 sys.setdefaultencoding('utf-8')
-list = ('3610000E1103','46000185DE122','3610000E0092','46001A8042A01')
+#list = ('3610000E1103','46000185DE122','3610000E0092','46001A8042A01')
 c = 0
 head = ('BSID','经度','纬度','基站描述','覆盖半径')
 body = ''
@@ -26,14 +26,14 @@ response_md = '''
 </tbody>
 </table>
 '''
-for i in list:
-    if c == 0:
-        #print '\t'.join(head).encode('gb2312')
-        body='\t'.join(head).encode('utf-8')
-    c = c+1
-    bs1 = Bs(i)
-    result = bs1.resultSet()
-    body = body + '</br>' + result.encode('utf-8')
+#for i in list:
+#    if c == 0:
+#        #print '\t'.join(head).encode('gb2312')
+#        body='\t'.join(head).encode('utf-8')
+#    c = c+1
+#    bs1 = Bs(i)
+#    result = bs1.resultSet()
+#    body = body + '</br>' + result.encode('utf-8')
 
 def md2html(mkdn):
     return markdown.markdown(mkdn)
@@ -60,9 +60,11 @@ def app(environ, start_response):
     d = parse_qs(environ['QUERY_STRING'])
     bsid = d.get('bsid',[''])[0]
     bsid = escape(bsid)
-    response_body = response_md % (bsid,'2','3')
+    bs1 = Bs(bsid)
+    response_body = bs1.resultSet()
+#    response_body = response_md % (bsid,'2','3')
     response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
     start_response(status,response_header)
-    #return body
-    return  md2html(response_body) 
+    return response_body
+    #return  md2html(response_body) 
 application = WSGIApplication(app)
