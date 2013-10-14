@@ -83,7 +83,7 @@ input#query{
 
 <div id="left">
 <!-- <iframe name="input_frame" src="static/form.html" ></iframe>  -->
-<form id="query" name="query" method="get" action="index.py"  onsubmit="loading()">
+<form id="query" name="query" method="get" action="index.py">
   <table width="370px" border="0" bordercolor="#F0F0F0" align="center" cellpadding="0px">
     <tr>
 	<td width="110"><label for="bsid">基站编号</label></td>
@@ -91,7 +91,7 @@ input#query{
         <input type="text" id="bsid" name="bsid" />
       </td>
       <td>
-        <input type="submit" id="query" name="Submit" value="提交" />
+        <input type="button" id="query" name="Submit" onClick="loading()" value="提交" />
       </td>
     </tr>
   </table>  
