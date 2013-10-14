@@ -63,7 +63,7 @@ def app(environ, start_response):
     bsid = d.get('bsid',[''])[0]
     bsid = escape(bsid)
     if not valid_bsid(bsid):
-	response_body = bsid+":invalid id!!"
+	response_body = "<tr><td>"bsid+"</td><td>invalid id!!</td></tr>"
         response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
         start_response(status,response_header)
         return response_body
@@ -71,16 +71,16 @@ def app(environ, start_response):
     try:
         bs1.doSearch()
     except socket.gaierror:
-        response_body = 'Resolve host failed.' 
+	response_body = "<tr><td>"bsid+"</td><td>Resolve host failed.</td></tr>"
     except socket.timeout:
-        response_body = 'Time out.' 
+	response_body = "<tr><td>"bsid+"</td><td>Time out.</td></tr>"
     if bs1.resultcode == '200':
         response_body = "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" %(bs1.BSID,bs1.lng,bs1.lat,bs1.address,bs1.precision) 
     else:
         try:
-            response_body = "%s:%s" %(bs1.BSID,bs1.r_code[bs1.resultcode]) 
+            response_body = "<tr><td>%s</td><td>%s</td></tr>" %(bs1.BSID,bs1.r_code[bs1.resultcode]) 
         except KeyError:
-            response_body = "%s:%s" %(bs1.resultcode,bs1.reason) 
+            response_body = "<tr><td>%s</td><td>%s</td><td>%s</td></tr>" %(bs1.BSID,bs1.resultcode,bs1.reason) 
 
     response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
     start_response(status,response_header)
