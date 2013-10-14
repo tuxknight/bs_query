@@ -36,7 +36,8 @@ function loading(){
     ajaxReq.onreadystatechange=function(){
         if(ajaxReq.readyState == 4){
             alert(ajaxReq.responseText.toString());
-            document.getElementById("right").innerHTML=ajaxReq.responseText.toString();
+            //document.getElementById("right").innerHTML=ajaxReq.responseText.toString();
+	    $("#thead").after(ajaxReq.responseText.toString())
         }
     }
   }
