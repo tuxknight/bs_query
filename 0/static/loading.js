@@ -17,6 +17,8 @@ function check_ajax(){
 function loading(){
     var ajaxReq;
     var message = "bsid="+document.getElementById("bsid").value;
+    var v = document.getElementById("query").value;
+    document.getElementById("query").value = "查询中* * *"
     try{ // for Firefox Opera Chrome and Sofaris
         ajaxReq = new XMLHttpRequest();
     }catch(e){
@@ -35,8 +37,8 @@ function loading(){
     ajaxReq.send();
     ajaxReq.onreadystatechange=function(){
         if(ajaxReq.readyState == 4){
-            alert(ajaxReq.responseText.toString());
             //document.getElementById("right").innerHTML=ajaxReq.responseText.toString();
+            document.getElementById("query").value = v;
 	    $("#thead").after(ajaxReq.responseText.toString())
         }
     }

@@ -74,6 +74,8 @@ def app(environ, start_response):
 	response_body = "<tr><td>"+bsid+"</td><td colspan=\"4\">Resolve host failed.</td></tr>"
     except socket.timeout:
 	response_body = "<tr><td>"+bsid+"</td><td colspan=\"4\">Time out.</td></tr>"
+    except ValueError:
+	response_body = "<tr><td>"+bsid+"</td><td colspan=\"4\">Try it again.</td></tr>"
     if bs1.resultcode == '200':
         response_body = "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" %(bs1.BSID,bs1.lng,bs1.lat,bs1.address,bs1.precision) 
     else:
