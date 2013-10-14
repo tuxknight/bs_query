@@ -75,7 +75,7 @@ def app(environ, start_response):
     except socket.timeout:
         response_body = 'Time out.' 
     if bs1.resultcode == '200':
-        response_body = "<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>" %(bs1.BSID,bs1.lng,bs1.lat,bs1.address,bs1.precision) 
+        response_body = "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" %(bs1.BSID,bs1.lng,bs1.lat,bs1.address,bs1.precision) 
     else:
         try:
             response_body = "%s:%s" %(bs1.BSID,bs1.r_code[bs1.resultcode]) 
