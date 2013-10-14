@@ -46,6 +46,9 @@ class Bs:
         elif BSID[0:1] == '3':
             self.net = 'c'
             self.r_code = self.C_rcode
+	else:
+	    self.net = 'g'
+	    self.r_code = self.G_rcode
         
 
 

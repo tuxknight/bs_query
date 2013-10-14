@@ -15,12 +15,10 @@ function check_ajax(){
     }
 }
 function loading(){
-    alert("loading");
     var ajaxReq;
     var message = "bsid="+document.getElementById("bsid").value;
     try{ // for Firefox Opera Chrome and Sofaris
         ajaxReq = new XMLHttpRequest();
-    alert("xmlHttpRequest");
     }catch(e){
         try{ // for IE
             ajaxReq = new ActiveXObject("Msxml2.XMLHTTP");
@@ -32,17 +30,13 @@ function loading(){
              }
         }
     }
-    alert("loading2");
     ajaxReq.open("GET","index.py?"+message);
     //ajaxReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     ajaxReq.send();
     ajaxReq.onreadystatechange=function(){
         if(ajaxReq.readyState == 4){
-            if(ajaxReq.responseText.toString().indexOf("0") == 4){
-                alert(ajaxReq.responseText.toString());
-            }else{
-                alert(ajaxReq.responseText.toString());
-            }
+            alert(ajaxReq.responseText.toString());
+            document.getElementById("right").innerHTML=ajaxReq.responseText.toString();
         }
     }
   }
