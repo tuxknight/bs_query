@@ -63,7 +63,7 @@ def app(environ, start_response):
     bsid = d.get('bsid',[''])[0]
     bsid = escape(bsid)
     if not valid_bsid(bsid):
-	response_body = "<tr><td>"+bsid+"</td><td colspan="3">invalid id!!</td></tr>"
+	response_body = "<tr><td>"+bsid+"</td><td colspan="4">invalid id!!</td></tr>"
         response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
         start_response(status,response_header)
         return response_body
