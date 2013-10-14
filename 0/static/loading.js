@@ -15,10 +15,12 @@ function check_ajax(){
     }
 }
 function loading(){
+    alert("loading");
     var ajaxReq;
     var message = "bsid="+document.getElementById("bsid").value;
     try{ // for Firefox Opera Chrome and Sofaris
         ajaxReq = new XMLHttpRequest();
+    alert("xmlHttpRequest");
     }catch(e){
         try{ // for IE
             ajaxReq = new ActiveXObject("Msxml2.XMLHTTP");
@@ -27,9 +29,10 @@ function loading(){
                 ajaxReq = new ActiveXObject("Microsoft.XMLHTTP");
             }catch(e){
                 alert("您的浏览器不支持Ajax,请更换浏览器后重试!");
-                return false;
              }
         }
+    }
+    alert("loading2");
     ajaxReq.open("GET","index.py?"+message);
     //ajaxReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     ajaxReq.send();
@@ -43,4 +46,3 @@ function loading(){
         }
     }
   }
-}
