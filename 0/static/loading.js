@@ -19,6 +19,7 @@ function loading(){
     var message = "bsid="+document.getElementById("bsid").value;
     var v = document.getElementById("query").value;
     document.getElementById("query").value = "查询中* * *"
+    document.getElementById("query").disabled= "disabled"
     try{ // for Firefox Opera Chrome and Sofaris
         ajaxReq = new XMLHttpRequest();
     }catch(e){
@@ -38,6 +39,7 @@ function loading(){
     ajaxReq.onreadystatechange=function(){
         if(ajaxReq.readyState == 4){
             //document.getElementById("right").innerHTML=ajaxReq.responseText.toString();
+            document.getElementById("query").disabled= ""
             document.getElementById("query").value = v;
 	    $("#thead").after(ajaxReq.responseText.toString())
         }
