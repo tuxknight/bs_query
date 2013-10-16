@@ -6,17 +6,16 @@ __VERSION__ = 0.3
 #import http.client
 import httplib
 import json
-import sys
 import socket
-import time
+import random
 
 class Bs:
     net = '0'
     BSID = '0'
     #HOST = 'apis.juhe.cn'
     HOST = 'v.juhe.cn'
-    __KEY__ = {'g':'f17e16be2871e09e7669b0c0abe03342',
-           'c':'d4ba46dd5a85d76a642350fcd62a951f'
+    __KEY__ = {'g':('f17e16be2871e09e7669b0c0abe03342','f9ab0d5901ecc5265b79a0071a6a32e2'),
+           'c':('d4ba46dd5a85d76a642350fcd62a951f','70fba5e2cdf581525498b412f74d3aba')
            }
     __HEX__ = '16'
     Fatal_code = ('444','112')
@@ -53,7 +52,10 @@ class Bs:
 
 
     def getUrl(self):
-        KEY = self.__KEY__[self.net]
+	length = len(self.__KEY__[self.net])
+	rand = random.randrange(0,length)
+        KEY = self.__KEY__[self.net][rand]
+	print KEY
         if self.net == 'c':
             sid = self.BSID[0:4]
             nid = self.BSID[4:8]
@@ -148,6 +150,8 @@ if __name__ == '__main__':
     #BSID = '3610000E0092'
     #BSID = '46000185DE122'
     #BSID = '46001A8042A01'
+    import sys
+    import time
     reload(sys)
     sys.setdefaultencoding('utf-8')
     list = ('3610000E1103','46000185DE122','3610000E0092','46001A8042A01')
@@ -177,5 +181,5 @@ if __name__ == '__main__':
             except KeyError:
                 print "%s:%s" %(bs1.resultcode,bs1.reason) 
                 break
-        time.sleep(1)
         '''
+time.sleep(5)
