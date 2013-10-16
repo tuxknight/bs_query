@@ -2,6 +2,7 @@
 from bae.core.wsgi import WSGIApplication
 from  wri_bsid_search import *
 from cgi import parse_qs, escape
+import sys
 import markdown
 reload(sys)
 sys.setdefaultencoding('utf-8')
