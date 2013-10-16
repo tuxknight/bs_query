@@ -182,4 +182,3 @@ if __name__ == '__main__':
                 print "%s:%s" %(bs1.resultcode,bs1.reason) 
                 break
         '''
-time.sleep(5)
