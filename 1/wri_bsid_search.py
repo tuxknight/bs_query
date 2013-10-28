@@ -55,7 +55,6 @@ class Bs:
 	length = len(self.__KEY__[self.net])
 	rand = random.randrange(0,length)
         KEY = self.__KEY__[self.net][rand]
-	print KEY
         if self.net == 'c':
             sid = self.BSID[0:4]
             nid = self.BSID[4:8]
