@@ -43,6 +43,6 @@ def app(environ, start_response):
         response_body = "500 Bad request"
     response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
     start_response(status,response_header)
-    return resonse_body
+    return response_body
 
 application = WSGIApplication(app)
