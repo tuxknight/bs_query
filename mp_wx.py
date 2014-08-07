@@ -4,10 +4,16 @@ from  wri_bsid_search import *
 from cgi import parse_qs, escape
 import sys
 import hashlib
+import logging
 #import markdown
 reload(sys)
 sys.setdefaultencoding('utf-8')
 TOKEN = "chufuyuan0420"
+logging.basicConfig(level=logging.DEBUG,
+	format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+	datefmt='%a, %d %b %Y %H:%M:%S',
+	filename='/home/bae/log/mp_wx.log',
+	filemode='w')
 def check_signature(sig,stamp,nonc,tk):
     par = [tk,stamp,nonc]
     parstr = "".join(sorted(par))
@@ -29,8 +35,10 @@ def app(environ, start_response):
     nonce = escape(nonce)
     echostr = d.get('echostr',[''])[0]
     echostr = escape(echostr)
-
+    logging.info(signature,timestamp,nonce,TOKEN)
     if check_signature(signature,timestamp,nonce,TOKEN):
 	response_body = echostr
+    else:
+        response_body = "500 Bad request"
 
 application = WSGIApplication(app)
