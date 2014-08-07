@@ -30,7 +30,7 @@ def app(environ, start_response):
     echostr = d.get('echostr',[''])[0]
     echostr = escape(echostr)
 
-    if check_signature(signature,timestamp,noce,TOKEN):
+    if check_signature(signature,timestamp,nonce,TOKEN):
 	response_body = echostr
 
 application = WSGIApplication(app)
