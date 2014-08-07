@@ -8,7 +8,7 @@ import hashlib
 reload(sys)
 sys.setdefaultencoding('utf-8')
 TOKEN = "chufuyuan0420"
-def check_signature(sig,stamp,nonc,tk)
+def check_signature(sig,stamp,nonc,tk):
     par = [tk,stamp,nonc]
     parstr = "".join(sorted(par))
     tmpstr = hashlib.sha1(parstr).hexdigest()
@@ -17,7 +17,7 @@ def check_signature(sig,stamp,nonc,tk)
     else:
 	return false
 
-def app(environ, start_response)
+def app(environ, start_response):
     status = "200 OK"
     #解析 HTTP GET 的参数
     d = parse_qs(environ["QUERY_STRING"])
