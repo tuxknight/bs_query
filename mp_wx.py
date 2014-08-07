@@ -13,9 +13,9 @@ def check_signature(sig,stamp,nonc,tk):
     parstr = "".join(sorted(par))
     tmpstr = hashlib.sha1(parstr).hexdigest()
     if tmpstr == sig:
-	return true
+	return True
     else:
-	return false
+	return False
 
 def app(environ, start_response):
     status = "200 OK"
