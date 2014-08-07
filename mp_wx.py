@@ -24,6 +24,7 @@ def check_signature(sig,stamp,nonc,tk):
 	return False
 
 def app(environ, start_response):
+    status = "200 OK"
     #解析 HTTP GET 的参数
     d = parse_qs(environ["QUERY_STRING"])
     logging.warning(d)
