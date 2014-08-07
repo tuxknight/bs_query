@@ -37,8 +37,11 @@ def app(environ, start_response):
     echostr = escape(echostr)
     logging.warning(signature,timestamp,nonce,TOKEN)
     if check_signature(signature,timestamp,nonce,TOKEN):
-	response_body = echostr
+        response_body = echostr
     else:
         response_body = "500 Bad request"
+    response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
+    start_response(status,response_header)
+    return resonse_body
 
 application = WSGIApplication(app)
