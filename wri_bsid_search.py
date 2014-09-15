@@ -14,8 +14,8 @@ class Bs:
     BSID = '0'
     #HOST = 'apis.juhe.cn'
     HOST = 'v.juhe.cn'
-    __KEY__ = {'g':('f17e16be2871e09e7669b0c0abe03342'),#,'f9ab0d5901ecc5265b79a0071a6a32e2'),
-           'c':('d4ba46dd5a85d76a642350fcd62a951f')#,'70fba5e2cdf581525498b412f74d3aba')
+    __KEY__ = {'g':('f17e16be2871e09e7669b0c0abe03342','f17e16be2871e09e7669b0c0abe03342'),
+           'c':('d4ba46dd5a85d76a642350fcd62a951f','d4ba46dd5a85d76a642350fcd62a951f')
            }
     __HEX__ = '16'
     Fatal_code = ('444','112')
