@@ -7,6 +7,7 @@ from bae.core.wsgi import WSGIApplication
 from sgmllib import SGMLParser
 from HTMLParser import HTMLParser
 from string import strip
+from cgi import parse_qs, escape
 
 #fetch http://www.hairongyi.com/
 HOST = "www.hairongyi.com"
@@ -88,6 +89,11 @@ class MyHTMLParser(SGMLParser):
             self.hry_fund.insert(l,result)
 
 def app(environ, start_response):
+    dic = {3:'Sucessed',4:'Failed',5:'Timeout'}
+    qs = parse_qs(environ['QUERY_STRING'])
+    crontab_callback_URL= qs.get('URL',[''])[0]
+    crontab_callback_code= qs.get('reason',[''])[0]
+    callbak = dic[crontab_callback_code]
     parser = MyHTMLParser()
     parser.feed(data)
     trade_count_today = parser.hry_tradeInfo[0]
