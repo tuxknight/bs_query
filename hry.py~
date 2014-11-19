@@ -87,7 +87,7 @@ class MyHTMLParser(SGMLParser):
             l = len(self.hry_fund)
             self.hry_fund.insert(l,result)
 
-def app(environ, start_response,)
+def app(environ, start_response)
     parser = MyHTMLParser()
     parser.feed(data)
     trade_count_today = parser.hry_tradeInfo[0]
