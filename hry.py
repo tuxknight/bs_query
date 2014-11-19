@@ -93,7 +93,7 @@ def app(environ, start_response):
     qs = parse_qs(environ['QUERY_STRING'])
     crontab_callback_URL= qs.get('URL',[''])[0]
     crontab_callback_code= qs.get('reason',[''])[0]
-    callback = dic[crontab_callback_code]
+    callback = dic[str(crontab_callback_code)]
     parser = MyHTMLParser()
     parser.feed(data)
     trade_count_today = parser.hry_tradeInfo[0]
