@@ -101,5 +101,5 @@ info = query_timestamp+','+info1+','+info2+'\n'
 file_csv=file("hry.csv","a")
 file_csv.write(info)
 file_csv.close()
-#print info
-#time.sleep(5)
+print info
+time.sleep(5)
