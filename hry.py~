@@ -87,24 +87,24 @@ class MyHTMLParser(SGMLParser):
             l = len(self.hry_fund)
             self.hry_fund.insert(l,result)
 
-def app(environ, start_response,)
-    parser = MyHTMLParser()
-    parser.feed(data)
-    trade_count_today = parser.hry_tradeInfo[0]
-    trade_count_total = parser.hry_tradeInfo[1]
-    online_count = parser.hry_tradeInfo[2]
-    fund_7 = parser.hry_fund[0]
-    fund_m = parser.hry_fund[1]
-    online_count = parser.hry_fund[2]
-    query_timestamp = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
-    info1 = ','.join(parser.hry_tradeInfo)
-    info2 = ','.join(parser.hry_fund)
-    info = query_timestamp+','+info1+','+info2+'\n'
-    file_csv=file("hry.csv","a")
-    file_csv.write(info)
-    file_csv.close()
-    #print info
-    #time.sleep(5)
+parser = MyHTMLParser()
+parser.feed(data)
+trade_count_today = parser.hry_tradeInfo[0]
+trade_count_total = parser.hry_tradeInfo[1]
+online_count = parser.hry_tradeInfo[2]
+fund_7 = parser.hry_fund[0]
+fund_m = parser.hry_fund[1]
+online_count = parser.hry_fund[2]
+query_timestamp = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
+info1 = ','.join(parser.hry_tradeInfo)
+info2 = ','.join(parser.hry_fund)
+info = query_timestamp+','+info1+','+info2+'\n'
+file_csv=file("hry.csv","a")
+file_csv.write(info)
+file_csv.close()
+#print info
+#time.sleep(5)
+def app(environ, start_response)
     status = "200 OK"
     response_body=info
     response_header = [('Content-type', 'text/html'),('Content-Length',str(len(response_body)))]
